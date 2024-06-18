@@ -29,5 +29,5 @@ COPY run_ray_task.py /run_ray_task.py
 # Expose Ray dashboard port
 EXPOSE 8265
 
-# Start Ray head node and run the Python script
-CMD ray start --head --port=6379 --object-store-memory=2147483648 && python /run_ray_task.py && tail -f /dev/null
+# Start Ray head node with the dashboard enabled and run the Python script
+CMD ray start --head --port=6379 --object-store-memory=2147483648 --dashboard-host 0.0.0.0 && python /run_ray_task.py && tail -f /dev/null
